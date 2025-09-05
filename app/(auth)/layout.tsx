@@ -8,8 +8,7 @@ export default function Authlayout({ children }: { children: React.ReactNode }) 
         {children}
       </div>
 
-      {/* Columna 2: Logo y nombre de la app (visible en pantallas grandes) */}
-      <div className='lg:flex lg:bg-[#0f1d3f] h-full justify-center items-center flex-col'>
+      <div className='hidden lg:flex lg:bg-[#0f1d3f] h-full justify-center items-center flex-col'>
         <Image 
           className='border-r-black rounded-2xl'
           src={"https://ik.imagekit.io/fefgntjox/Gemini_Generated_Image_y006asy006asy006.png?updatedAt=1757032547508"}
