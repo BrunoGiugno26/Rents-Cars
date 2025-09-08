@@ -1,12 +1,14 @@
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { SidebarRoutes } from "../SidebarRoutes/SidebarRoutes";
+import { UserButton } from "@clerk/nextjs";
 
 export function NavbarDashboard() {
   return (
@@ -16,15 +18,19 @@ export function NavbarDashboard() {
           <SheetTrigger className="flex items-center">
             <Menu />
           </SheetTrigger>
-          <SheetContent side="left" className="w-[200px] sm:w-[250px] p-0">
+          <SheetContent side="left" className="w-[200px] sm:w-[250px] p-0 bg-white">
             <SheetHeader>
-              <SheetTitle className="sr-only">
-                Navegación del Dashboard
-              </SheetTitle>
+              <SheetTitle className="sr-only">Menú del Dashboard</SheetTitle>
+              <SheetDescription className="sr-only">
+                Navegación principal de la aplicación.
+              </SheetDescription>
             </SheetHeader>
             <SidebarRoutes />
           </SheetContent>
         </Sheet>
+      </div>
+      <div className="flex items center justify-end w-full gap-x-2">
+        <UserButton/>
       </div>
     </nav>
   );
