@@ -4,15 +4,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ik.imagekit.io",
+        hostname: "utfs.io",
       },
       {
         protocol: "https",
-        hostname: "utfs.io", // dominio que usa Uploadthing
+        hostname: "ik.imagekit.io",
       },
     ],
   },
 };
 
-export default nextConfig;
-
+module.exports = nextConfig;

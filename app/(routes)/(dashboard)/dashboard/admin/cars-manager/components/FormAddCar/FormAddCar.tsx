@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +27,7 @@ import {
 import { UploadButton } from "@/utils/uploadthing";
 
 export function FormAddCar() {
+  const [photoUploaded, setphotoUploaded] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,8 +46,8 @@ export function FormAddCar() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
-  
-  // Eliminamos la variable photoUrl y el import de useState
+
+  const { isValid } = form.formState;
 
   return (
     <Form {...form}>
@@ -187,27 +189,33 @@ export function FormAddCar() {
               <FormItem>
                 <FormLabel>Car Image</FormLabel>
                 <FormControl>
-                  {field.value ? (
+                  {photoUploaded ? (
                     <div className="flex flex-col items-center justify-center space-y-4">
                       <Image
-                        src={field.value}
+                        src={form.getValues("photo")}
                         alt="Car image"
                         width={400}
                         height={400}
                         className="object-cover rounded-md"
                       />
-                      <Button onClick={() => form.setValue("photo", "")} variant="secondary">
+                      <Button
+                        onClick={() => {
+                          form.setValue("photo", "");
+                          setphotoUploaded(false);
+                        }}
+                        variant="secondary"
+                      >
                         Eliminar imagen
                       </Button>
                     </div>
                   ) : (
                     <UploadButton
                       className="rounded-lg bg-slate-600/20 text-slate-800 outline-dotted outline-3"
-                      endpoint="photo"
+                      {...field}
+                      endpoint={"photo"}
                       onClientUploadComplete={(res) => {
-                        if (res && res.length > 0) {
-                          form.setValue("photo", res[0].url);
-                        }
+                        form.setValue("photo", res?.[0].url);
+                        setphotoUploaded(true);
                       }}
                       onUploadError={(error: Error) => {
                         console.log(error);
@@ -219,9 +227,26 @@ export function FormAddCar() {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="priceDay"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Price per Day</FormLabel>
+                <FormControl>
+                  <Input placeholder="$20" type="number" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <Button className="bg-black text-white p-4 lg:col-span-2" type="submit">
-          Submit
+        <Button
+          type="submit"
+          className="bg-black text-white w-full mt-5"
+          disabled={!isValid}
+        >
+          Create car
         </Button>
       </form>
     </Form>
