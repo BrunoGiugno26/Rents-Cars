@@ -4,12 +4,8 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
 } from '@clerk/nextjs'
+import { Toaster } from "@/components/ui/sonner"
 
 // Definimos la fuente Outfit
 const outfit = Outfit({
@@ -32,6 +28,7 @@ export default function RootLayout({
         <body className={outfit.className}>
           <NextTopLoader color="0000"/>
           {children}
+          <Toaster/>
         </body>
       </html>
     </ClerkProvider>
