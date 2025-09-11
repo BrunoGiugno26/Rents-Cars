@@ -214,6 +214,7 @@ const router = useRouter();
                         className="object-cover rounded-md"
                       />
                       <Button
+                      className="bg-black text-white text-xs"
                         onClick={() => {
                           form.setValue("photo", "");
                           setphotoUploaded(false);
