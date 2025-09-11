@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../lib/generated/prisma"
 }
 
 datasource db {
@@ -16,7 +15,7 @@ datasource db {
 }
 
 model Car{
-  id String @id @default(ulid())
+  id String @id @default(uuid())
   userId String
   name String @db.Text
   cv String @db.Text
