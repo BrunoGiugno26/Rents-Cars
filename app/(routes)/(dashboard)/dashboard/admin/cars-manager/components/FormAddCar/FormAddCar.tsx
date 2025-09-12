@@ -32,8 +32,7 @@ import { useRouter } from "next/navigation";
 export function FormAddCar(props:FormAddCarProps) {
   const { setOpenDialog } = props
   const [photoUploaded, setphotoUploaded] = useState(false);
-
-const router = useRouter();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -73,7 +72,7 @@ const router = useRouter();
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Car name</FormLabel>
                 <FormControl>
                   <Input placeholder="Peugeot Model 208" {...field} />
                 </FormControl>

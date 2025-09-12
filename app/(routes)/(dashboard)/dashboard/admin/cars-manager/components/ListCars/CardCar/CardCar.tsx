@@ -7,9 +7,25 @@ import { useRouter } from "next/navigation";
 
 import { CardCarProps } from "./CardCar.types";
 import { ButtonEditCar } from "./ButtonEditCar";
+import axios from "axios";
 
 export function CardCar(props: CardCarProps) {
   const { car } = props;
+  const router = useRouter()
+
+  const deleteCar = async() => {
+    try{
+      await axios.delete(`/api/car/${car.id}`)
+      toast.success("Car Deleted 🫡|❌|🫡",{
+        description:"Car Deleted Succsesfully"
+      })
+      router.refresh();
+    }catch (error){
+      toast.error("Something Went Wrong",{
+        description:"Please Try Again"
+      })
+    }
+  }
   return (
     <div className="relative pt-8 bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden">
       {/* Banner de estado */}
@@ -68,7 +84,7 @@ export function CardCar(props: CardCarProps) {
       <div className="flex flex-col gap-2 mt-4 p-4">
         {" "}
         {/* Añadido mt-4, p-4 y flex-col gap-2 */}
-        <Button variant="outline" onClick={() => console.log("delete")}>
+        <Button variant="outline" onClick={deleteCar}>
           Delete
           <Trash className="w-4 h-4 ml-2" />
         </Button>
