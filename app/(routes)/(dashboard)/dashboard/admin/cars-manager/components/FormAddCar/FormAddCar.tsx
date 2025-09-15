@@ -53,7 +53,11 @@ export function FormAddCar(props:FormAddCarProps) {
     setOpenDialog(false)
     try{
       await axios.post("/api/car",values)
-      toast("car created ✅")
+      toast.success("Car Created ✅",{
+        description:"Car Created Succesfully",
+        className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
+      })
       router.refresh();
     }catch(error){
       console.error(error);

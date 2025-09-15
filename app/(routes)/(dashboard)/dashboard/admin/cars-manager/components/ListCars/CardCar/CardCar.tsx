@@ -26,11 +26,38 @@ export function CardCar(props: CardCarProps) {
       })
     }
   }
+
+  const handlerPublishCar = async(publish:boolean) =>{
+    try{
+      await axios.patch(`/api/car/${car.id}`,{isPublish:publish})
+      if(publish){
+
+        toast.success("Car Published 👌👌",{
+          description:"Car Published Successfully",
+          className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
+        })
+      } else {
+        toast.error("Car Unpublish ⚠️",{
+          description:"Car Unpublish Succesfully",
+          className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
+        })
+      }
+      router.refresh();
+    }catch(error){
+      toast.error("Something Went Wrong",{
+        description:"Please Try Again",
+        className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
+      })
+    }
+  }
   return (
     <div className="relative pt-8 bg-white rounded-lg shadow-md hover:shadow-lg overflow-hidden">
       {/* Banner de estado */}
       {car.isPublish ? (
-        <p className="absolute top-0 right-0 w-full p-1 text-center text-white bg-green-700 z-10">
+        <p className="absolute top-0 right-0 w-full p-1 text-center text-white bg-green-400 z-10">
           Published
         </p>
       ) : (
@@ -50,15 +77,12 @@ export function CardCar(props: CardCarProps) {
       </div>
 
       <div className="p-4">
-        {" "}
-        {/* Añadido p-4 para un mejor espaciado general */}
+
         <h3 className="text-lg font-semibold">{car.name}</h3>
-        <p className="mt-1">{car.priceDay}$/ Dia</p> {/* Añadido mt-1 */}
+        <p className="mt-1">{car.priceDay}$/ Dia</p> 
       </div>
 
       <div className="grid md:grid-cols-2 gap-x-4 px-4">
-        {" "}
-        {/* Añadido px-4 */}
         <p className="flex items-center">
           <Gem className="h-4 w-4 mr-2" strokeWidth={1} />
           {car.type}
@@ -82,7 +106,6 @@ export function CardCar(props: CardCarProps) {
       </div>
 
       <div className="flex flex-col gap-2 mt-4 p-4">
-        {" "}
         {/* Añadido mt-4, p-4 y flex-col gap-2 */}
         <Button variant="outline" onClick={deleteCar}>
           Delete
@@ -93,14 +116,14 @@ export function CardCar(props: CardCarProps) {
           <Button
             className="bg-black text-white w-full mt-3"
             variant="outline"
-            onClick={() => console.log("Unpublish")}
+            onClick={() => handlerPublishCar(false)}
           >
             Unpublish
             <Upload className="w-4 h-4 ml-2" />
           </Button>
         ) : (
           <Button className="bg-black text-white w-full mt-3"
-            onClick={() => console.log("Publish")}>Publish
+            onClick={() => handlerPublishCar(true)}>Publish
             <Upload className="w-4 h-4 ml-2"/>
             </Button>
         )}

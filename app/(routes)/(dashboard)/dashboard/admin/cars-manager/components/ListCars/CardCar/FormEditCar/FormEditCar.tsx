@@ -56,13 +56,17 @@ export function FormEditCar(props: FormEditCarProprs) {
 
     try {
       await axios.patch(`/api/car/${carData.id}/form`, values);
-      toast.success("Car edited 👌",{
+      toast.success("Car edited 👌", {
         description: "Car edited succesfully",
+        className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
       });
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong", {
         description: "Please try again later.",
+        className: "font-bold text-base px-6 py-4 min-w-[300px]",
+        style: { fontSize: "1rem" }
       });
     }
   };
