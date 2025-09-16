@@ -1,3 +1,4 @@
+// src/components/CalendarSelector/CalendarSelector.tsx
 "use client";
 import { CalendarIcon } from "lucide-react";
 import { addDays, format } from "date-fns";
@@ -14,40 +15,63 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function CalendarSelector(props: CalendarSelectorProps) {
-    
-  const { setDateSelected, className,carPriceDay } = props;
+  const { setDateSelected, className, carPriceDay } = props;
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 5),
   });
 
+  // Estado para controlar el número de meses
+  const [numberOfMonths, setNumberOfMonths] = useState(2);
+
+  // Efecto para actualizar el número de meses según el tamaño de la pantalla
   useEffect(() => {
-    setDateSelected([date?.from, date?.to]);
+    const handleResize = () => {
+      // Si la pantalla es menor a 768px (tamaño "md" en Tailwind), muestra solo un mes.
+      if (window.innerWidth < 768) {
+        setNumberOfMonths(1);
+      } else {
+        setNumberOfMonths(2);
+      }
+    };
+
+    // Llama a la función al cargar el componente
+    handleResize();
+    // Añade el evento para que se actualice al cambiar el tamaño de la ventana
+    window.addEventListener("resize", handleResize);
+    // Limpia el evento cuando el componente se desmonta
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Cálculo de los días y actualización del estado en el componente padre
+  useEffect(() => {
+    const daysBetween =
+      date?.from && date?.to
+        ? Math.round(
+            (date.to.getTime() - date.from.getTime()) / (1000 * 60 * 60 * 24)
+          )
+        : 0;
+    
+    const totalDays = daysBetween + 1;
+
+    setDateSelected([date?.from, date?.to, totalDays]);
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
-  const calculateDaysBetween = (from: Date, to: Date): number => {
-    const oneDay = 24 * 60 * 60 * 1000;
-    const difInTime = to.getTime() - from.getTime();
-    return Math.round(difInTime / oneDay);
-  };
-
   const daysBetween =
-    date?.from && date?.to ? calculateDaysBetween(date.from, date.to) : 0;
+    date?.from && date?.to ? Math.round((date.to.getTime() - date.from.getTime()) / (1000 * 60 * 60 * 24)) : 0;
+  const totalDays = daysBetween + 1;
+  const price = totalDays * Number(carPriceDay);
 
   return (
     <>
       <div className={cn("grid gap-2", className)}>
-        {date?.from && date?.to && (
-          <>
-            <p className="mt-4 text-lg text-black">
-              Dias totales {daysBetween}
-            </p>
-            <p className="mb-4 text-md">
-              Precio total: {daysBetween * Number(carPriceDay)} $ (Tax.Includes)
-            </p>
-          </>
-        )}
+        <p className="mt-4 text-lg text-black">
+          Dias totales {totalDays}
+        </p>
+        <p className="mb-4 text-md">
+          Precio total: {price} $ (Tax.Includes)
+        </p>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -59,7 +83,6 @@ export function CalendarSelector(props: CalendarSelectorProps) {
               )}
             >
               <CalendarIcon className="w-4 h-4 mr-2" />
-
               {date?.from ? (
                 date.to ? (
                   <>
@@ -74,15 +97,17 @@ export function CalendarSelector(props: CalendarSelectorProps) {
               )}
             </Button>
           </PopoverTrigger>
-          
-          <PopoverContent className="w-auto p-0 z-[99]" align="end">
+          <PopoverContent 
+            className="w-auto p-0 z-[99]" 
+            align="end"
+          >
             <Calendar
               autoFocus
               mode="range"
               defaultMonth={date?.from}
               selected={date}
               onSelect={setDate}
-              numberOfMonths={2}
+              numberOfMonths={numberOfMonths}
             />
           </PopoverContent>
         </Popover>
