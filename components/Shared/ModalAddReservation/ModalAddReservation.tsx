@@ -1,5 +1,3 @@
-// src/components/ModalAddReservation.tsx
-
 "use client"
 import { Button } from "@/components/ui/button";
 import { ModalAddReservationProps } from "./ModalAddReservation.types";
@@ -19,6 +17,8 @@ import { CalendarSelector } from "./CalendarSelector/CalendarSelector";
 import { addDays } from "date-fns";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
+import axios from "axios";
+import { toast } from "sonner";
 
 export function ModalAddReservation(props: ModalAddReservationProps) {
     const { car } = props
@@ -27,8 +27,17 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
         addDays(new Date(), 5),
         5
     ]);
-    const onReserveCar = async (car: Car, dareSelected: DateRange) => {
-        console.log("reserve car")
+    const onReserveCar = async (car: Car, dateSelected: DateRange) => {
+        const response = await axios.post("/api/checkout",{
+            carId: car.id,
+            priceDay: car.priceDay,
+            startDate: dateSelected.from,
+            endDate:dateSelected.to,
+            carName: car.name,
+        })
+
+        window.location = response.data.url
+        toast.success("Car Reserved 👌",)
     }
 
     return (
@@ -43,7 +52,6 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
                     <AlertDialogTitle>Selecciona las fechas en las que quieras alquilar el vehículo</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="p-4">
-                    {/* Se pasa el precio del auto a CalendarSelector */}
                     <CalendarSelector setDateSelected={setDateSelected} carPriceDay={car.priceDay} />
                 </div>
                 <AlertDialogFooter>
