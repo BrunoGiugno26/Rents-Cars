@@ -22,7 +22,7 @@ export function ButtonEditCar(props: ButtonEditCartProps) {
   return (
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>
-        <Button variant="outline" onClick={() => setOpenDialog(true)}>
+        <Button className="hover:bg-slate-100" variant="outline" onClick={() => setOpenDialog(true)}>
           Edit
           <Pencil className="w-4 h-4 ml-2" />
         </Button>

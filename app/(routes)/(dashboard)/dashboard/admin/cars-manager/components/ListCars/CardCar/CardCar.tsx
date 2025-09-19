@@ -107,14 +107,14 @@ export function CardCar(props: CardCarProps) {
 
       <div className="flex flex-col gap-2 mt-4 p-4">
         {/* Añadido mt-4, p-4 y flex-col gap-2 */}
-        <Button variant="outline" onClick={deleteCar}>
+        <Button variant="outline" onClick={deleteCar} className="hover:bg-slate-100">
           Delete
           <Trash className="w-4 h-4 ml-2" />
         </Button>
         <ButtonEditCar carData = {car}/>
         {car.isPublish ? (
           <Button
-            className="bg-black text-white w-full mt-3"
+            className="bg-black text-white hover:bg-slate-300 w-full mt-3"
             variant="outline"
             onClick={() => handlerPublishCar(false)}
           >
@@ -122,7 +122,7 @@ export function CardCar(props: CardCarProps) {
             <Upload className="w-4 h-4 ml-2" />
           </Button>
         ) : (
-          <Button className="bg-black text-white w-full mt-3"
+          <Button className="bg-black text-white hover:bg-slate-300 w-full mt-3"
             onClick={() => handlerPublishCar(true)}>Publish
             <Upload className="w-4 h-4 ml-2"/>
             </Button>
