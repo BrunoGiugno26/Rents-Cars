@@ -22,11 +22,11 @@ export const dataAdminSlidebar = [
     {
         icon:Wrench,
         label:"Manage your cars",
-        href: "dashboard/admin/cars-manager",
+        href: "/dashboard/admin/cars-manager",
     },
     {
         icon:FolderKanban,
         label:"All reserves",
-        href: "dashboard/admin/reserves",
+        href: "/dashboard/admin/reserves-admin",
     },
 ];
