@@ -8,7 +8,7 @@ import Link from "next/link";
 export function Navbar() {
   const { userId } = useAuth();
   return (
-    <div className="max-w-5xl py-5 mx-auto">
+    <div className="max-w-7xl py-5 mx-auto">
       <div className="justify-between lg:flex">
         <Link href="/" className="flex items-center justify-center gap-x-2">
           <Image
