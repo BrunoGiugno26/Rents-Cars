@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="overflow-y-scroll">
         <body className={outfit.className}>
           <NextTopLoader color="0000"/>
           {children}

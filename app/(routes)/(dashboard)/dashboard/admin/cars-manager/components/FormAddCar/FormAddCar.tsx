@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -29,8 +29,8 @@ import { FormAddCarProps } from "./FormAddCar.types";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-export function FormAddCar(props:FormAddCarProps) {
-  const { setOpenDialog } = props
+export function FormAddCar(props: FormAddCarProps) {
+  const { setOpenDialog } = props;
   const [photoUploaded, setphotoUploaded] = useState(false);
   const router = useRouter();
 
@@ -50,18 +50,18 @@ export function FormAddCar(props:FormAddCarProps) {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setOpenDialog(false)
-    try{
-      await axios.post("/api/car",values)
-      toast.success("Car Created ✅",{
-        description:"Car Created Succesfully",
+    setOpenDialog(false);
+    try {
+      await axios.post("/api/car", values);
+      toast.success("Car Created ✅", {
+        description: "Car Created Succesfully",
         className: "font-bold text-base px-6 py-4 min-w-[300px]",
-        style: { fontSize: "1rem" }
-      })
+        style: { fontSize: "1rem" },
+      });
       router.refresh();
-    }catch(error){
+    } catch (error) {
       console.error(error);
-      toast("Something went wrong")
+      toast("Something went wrong");
     }
   };
 
@@ -70,7 +70,7 @@ export function FormAddCar(props:FormAddCarProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-2">
           <FormField
             control={form.control}
             name="name"
@@ -112,9 +112,16 @@ export function FormAddCar(props:FormAddCarProps) {
                       <SelectValue placeholder="Select the type of car" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="manual">Manual</SelectItem>
-                    <SelectItem value="automatic">Automatic</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem className="hover:bg-slate-100" value="manual">
+                      Manual
+                    </SelectItem>
+                    <SelectItem
+                      className="hover:bg-slate-100"
+                      value="automatic"
+                    >
+                      Automatic
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -136,11 +143,19 @@ export function FormAddCar(props:FormAddCarProps) {
                       <SelectValue placeholder="Select the quantity of people" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                    <SelectItem value="7">7</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem className="hover:bg-slate-100" value="2">
+                      2
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="4">
+                      4
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="5">
+                      5
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="7">
+                      7
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -162,11 +177,19 @@ export function FormAddCar(props:FormAddCarProps) {
                       <SelectValue placeholder="Select the quantity of the car" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="nafta">Nafta</SelectItem>
-                    <SelectItem value="diesel">Diesel</SelectItem>
-                    <SelectItem value="electric">Electric</SelectItem>
-                    <SelectItem value="hybrid">Hybird</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem className="hover:bg-slate-100" value="nafta">
+                      Nafta
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="diesel">
+                      Diesel
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="electric">
+                      Electric
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="hybrid">
+                      Hybird
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -188,12 +211,22 @@ export function FormAddCar(props:FormAddCarProps) {
                       <SelectValue placeholder="Select the type of car" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="sedan">Sedan</SelectItem>
-                    <SelectItem value="suv">SUV</SelectItem>
-                    <SelectItem value="coupe">Coupe</SelectItem>
-                    <SelectItem value="familiar">Familiar</SelectItem>
-                    <SelectItem value="deluxe">Deluxe</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem className="hover:bg-slate-100" value="sedan">
+                      Sedan
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="suv">
+                      SUV
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="coupe">
+                      Coupe
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="familiar">
+                      Familiar
+                    </SelectItem>
+                    <SelectItem className="hover:bg-slate-100" value="deluxe">
+                      Deluxe
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -217,7 +250,7 @@ export function FormAddCar(props:FormAddCarProps) {
                         className="object-cover rounded-md"
                       />
                       <Button
-                      className="bg-black text-white text-xs"
+                        className="bg-black text-white text-xs"
                         onClick={() => {
                           form.setValue("photo", "");
                           setphotoUploaded(false);

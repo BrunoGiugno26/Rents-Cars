@@ -1,0 +1,75 @@
+export const categoryOurFleet = [
+    {
+        name:"Premium",
+        active:true
+    },
+    {
+        name:"Coupe",
+        active:false
+    },
+    {
+        name:"Sportcar",
+        active:true
+    },
+    {
+        name:"Hypercar",
+        active:false
+    },
+    {
+        name:"Limusines",
+        active:false
+    },
+    {
+        name:"Classic",
+        active:false
+    },
+];
+
+export const dataFirstBlockOutFleet = [
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-7(1).jpg?updatedAt=1758471152106",
+        alt:"Mercedes Benz",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-3.png?updatedAt=1758471048970",
+        alt:"Renault",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-14.png?updatedAt=1758549149380",
+    },
+];
+
+export const dataSecondBlockOutFleet =[
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-4.jpg?updatedAt=1758471049451",
+        alt:"BMW",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-7.jpg?updatedAt=1758471049187",
+        alt:"Tesla",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-13.jpg?updatedAt=1758546673254",
+        alt:"Volkswagen",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-6.jpg?updatedAt=1758471048915",
+        alt:"Peougeot",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-5.jpg?updatedAt=1758471049150",
+        alt:"Fiat",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-2.png?updatedAt=1758471049324",
+        alt:"Nissan",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-8.jpg?updatedAt=1758474314700",
+        alt:"Chevrolet",
+    },
+    {
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-10.jpg?updatedAt=1758474314865",
+        alt:"Ford",
+    },
+];

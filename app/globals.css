@@ -32,6 +32,16 @@
   }
 }
 
+@layer utilities {
+  .object-position-top {
+    object-position: top;
+  }
+
+  .object-position-bottom {
+    object-position: bottom;
+  }
+}
+
 
 
 

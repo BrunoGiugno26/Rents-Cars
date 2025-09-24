@@ -1,6 +1,11 @@
-import { Calendar, Car, FolderKanban, Heart, Wrench } from "lucide-react"
+import { Calendar, Car, FolderKanban, Heart, Wrench,HomeIcon } from "lucide-react"
 
 export const dataGeneralSlidebar = [
+    {
+        icon:HomeIcon,
+        label:"Home",
+        href:"/"
+    },
     {
         icon:Car,
         label:"Cars",
