@@ -23,8 +23,8 @@ const car = await db.car.findMany({
 
     return (
         <div>
-            <div className="flex justify-between m-5 p-6">
-                <h2 className="text-2xl font-bold">Manage your cars</h2>
+            <div className="flex justify-between p-8">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">Manage your cars</h2>
                 <ButtonAddCar/>
             </div>
             <ListCars cars ={car}/>

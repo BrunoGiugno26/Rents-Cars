@@ -70,7 +70,7 @@ export function FormAddCar(props: FormAddCarProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <FormField
             control={form.control}
             name="name"
@@ -257,7 +257,7 @@ export function FormAddCar(props: FormAddCarProps) {
                         }}
                         variant="secondary"
                       >
-                        Eliminar imagen
+                        Delete image
                       </Button>
                     </div>
                   ) : (

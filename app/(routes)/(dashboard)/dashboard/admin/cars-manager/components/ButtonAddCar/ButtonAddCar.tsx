@@ -4,7 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader, 
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -24,7 +24,7 @@ export function ButtonAddCar() {
         </Button>
       </DialogTrigger>
       <DialogContent 
-        className="bg-white overflow-y-auto" // Elimina la restricción de altura aquí
+        className="bg-white max-h-[85vh] overflow-y-auto" // Cambia la clase aquí
       >
         <DialogHeader>
           <DialogTitle>Add a new car</DialogTitle>
@@ -32,7 +32,7 @@ export function ButtonAddCar() {
             Complete this form to add a new car to the list
           </DialogDescription>
         </DialogHeader>
-        <FormAddCar setOpenDialog={setOpenDialog}/>
+        <FormAddCar setOpenDialog={setOpenDialog} />
       </DialogContent>
     </Dialog>
   );
