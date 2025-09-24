@@ -2,12 +2,13 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import db from "@/lib/db";
 import { ListCars } from "./components/ListCars";
+import { isAdministrator } from "@/lib/isAdministrator";
 
 
 export default async function DashboardPage() {
   const {userId} = auth()
 
-  if(!userId){
+  if(!userId || !isAdministrator(userId)){
     return redirect("/")
   }
 

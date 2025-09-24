@@ -21,7 +21,7 @@ export function SliderBrands() {
           }),
         ]}
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="ml-4">
           {dataBrands.map((brand) => (
             <CarouselItem key={brand.url} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
               <div className="p-1">

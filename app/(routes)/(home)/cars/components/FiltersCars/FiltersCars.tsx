@@ -21,7 +21,7 @@ export function FiltersCars(props: FiltersCarsProps) {
   };
 
   return (
-    <div className="mt-5 mb-8 flex flex-col gap-5 space-y-2 md:flex-row md:space-y-0">
+    <div className="mt-5 mb-8 flex flex-col space-y-2 md:flex-row md:space-y-0 md:gap-5">
       <Select onValueChange={(value) => handleFilter("type", value)} value={filters.type}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Type of cars" />
