@@ -15,7 +15,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center justify-center gap-x-2">
           <Image
             src={
-              "https://ik.imagekit.io/fefgntjox/Captura%20de%20pantalla%202025-09-05%20123734.png?updatedAt=1757086702330"
+              "https://ik.imagekit.io/fefgntjox/Rents-Cars/untitled-0.png?updatedAt=1758552652106"
             }
             alt="BrunoCars"
             width={80}
