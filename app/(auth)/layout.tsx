@@ -13,8 +13,8 @@ export default function Authlayout({ children }: { children: React.ReactNode }) 
           className='border-r-black rounded-2xl'
           src={"https://ik.imagekit.io/fefgntjox/Rents-Cars/Gemini_Generated_Image_y006asy006asy006.png?updatedAt=1758376712045"}
           alt='LogoGiugnoCars'
-          width={300}
-          height={300}
+          width={400}
+          height={400}
         />
       </div>
     </div>
