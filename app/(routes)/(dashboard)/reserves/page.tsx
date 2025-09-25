@@ -21,14 +21,14 @@ export default async function pageReserves() {
     }
   })
 
-  return <div>
+  return <div className="flex-1">
     <h1 className="mb-6 text-3xl font-semibold">Reserves Page</h1>
     {orders.length === 0 ?(
         <div className="felx flex-col justify-center gap-4">
             <h2 className="text-xl">Don't have orders</h2>
             <p>Place your orders through our website!!</p>
             <Link href={"/cars"}>
-            <Button className="bg-black text-white">
+            <Button className=" mt-6 bg-black text-white ">
                 Cars List
             </Button>
             </Link>

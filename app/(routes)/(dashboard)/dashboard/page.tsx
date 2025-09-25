@@ -8,7 +8,7 @@ import { isAdministrator } from "@/lib/isAdministrator";
 export default async function DashboardPage() {
   const {userId} = auth()
 
-  if(!userId || !isAdministrator(userId)){
+  if(!userId){
     return redirect("/")
   }
 
