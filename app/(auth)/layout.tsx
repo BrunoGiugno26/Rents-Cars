@@ -11,7 +11,7 @@ export default function Authlayout({ children }: { children: React.ReactNode }) 
       <div className='hidden lg:flex lg:bg-[#0f1d3f] h-full justify-center items-center flex-col'>
         <Image 
           className='border-r-black rounded-2xl'
-          src={"https://ik.imagekit.io/fefgntjox/Gemini_Generated_Image_y006asy006asy006.png?updatedAt=1757032547508"}
+          src={"https://ik.imagekit.io/fefgntjox/Rents-Cars/Gemini_Generated_Image_y006asy006asy006.png?updatedAt=1758376712045"}
           alt='LogoGiugnoCars'
           width={300}
           height={300}
