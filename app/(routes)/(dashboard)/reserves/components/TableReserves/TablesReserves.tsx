@@ -52,19 +52,19 @@ export function TablesReserves(props: TableReservesProps) {
             if (response.ok) {
                 // ✅ Notificación de éxito usando Sonner
                 toast.success("Reserva cancelada con éxito.", {
-                    description: `La orden ${orderToCancelId} ha sido marcada como cancelada.`,
+                    description: `order ${orderToCancelId} has been marked as cancelled.`,
                 });
                 router.refresh(); 
             } else {
                 const errorData = await response.json();
                 // ❌ Notificación de error usando Sonner
-                toast.error("Error al cancelar la reserva.", {
-                    description: errorData.message || 'La orden no pudo ser cancelada. Intenta de nuevo.',
+                toast.error("Error canceling reservation.", {
+                    description: errorData.message || 'The order could not be canceled. Please try again.',
                 });
             }
         } catch (error) {
-            toast.error("Error de conexión.", {
-                description: "No se pudo comunicar con el servidor.",
+            toast.error("Conection error", {
+                description: "couldn't communicate with the server",
             });
         } finally {
             setOrderToCancelId(null); // Limpia el ID después de la acción
