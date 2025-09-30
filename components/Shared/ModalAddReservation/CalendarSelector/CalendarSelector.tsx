@@ -65,7 +65,9 @@ export function CalendarSelector(props: CalendarSelectorProps) {
 
   return (
     <>
-      <div className={cn("grid gap-2", className)}>
+      <div className={cn("grid gap-2", className)}
+      translate="no"
+      >
         <p className="mt-4 text-lg text-black">
           Dias totales {totalDays}
         </p>

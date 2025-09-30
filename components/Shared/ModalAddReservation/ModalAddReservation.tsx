@@ -49,7 +49,7 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Selecciona las fechas en las que quieras alquilar el vehículo</AlertDialogTitle>
+                    <AlertDialogTitle>Select the dates you want to rent the vehicle</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="p-4">
                     <CalendarSelector setDateSelected={setDateSelected} carPriceDay={car.priceDay} />
