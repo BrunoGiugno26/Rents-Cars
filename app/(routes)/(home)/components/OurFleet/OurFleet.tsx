@@ -9,7 +9,17 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 export function OurFleet() {
+  const allImages = [...dataFirstBlockOutFleet, ...dataSecondBlockOutFleet];
+
   return (
     <div className="max-w-6xl mx-auto text-center py-12 md:py-40 p-6">
       <h3 className="text-2xl md:text-6xl font-bold">Our Vehicle Feet</h3>
@@ -30,7 +40,7 @@ export function OurFleet() {
           </div>
         ))}
       </div>
-      <div className="mb-10 mt-24">
+      <div className="hidden md:block mb-10 mt-24">
         {/* Aquí la primera cuadrícula */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {dataFirstBlockOutFleet.map(({ url }) => (
@@ -65,7 +75,27 @@ export function OurFleet() {
           ))}
         </div>
       </div>
-      <div className="mt-5 text-center">
+      <div className="md:hidden mb-10 mt-24">
+        <Carousel className="w-full max-w-sm mx-auto">
+          <CarouselContent>
+            {allImages.map(({ url }, index) => (
+              <CarouselItem key={index}>
+                <div className="p-1">
+                  <div className="relative h-72 w-full">
+                    <Image
+                      src={url}
+                      alt={`Car ${index + 1}`}
+                      fill
+                      className="rounded-xl object-cover"
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 bg-white"/>
+          <CarouselNext className="absolute right-4 bg-white"/>
+        </Carousel>
         <Link href={"/cars"} className="flex items-center justify-center">
           <Button
             asChild
