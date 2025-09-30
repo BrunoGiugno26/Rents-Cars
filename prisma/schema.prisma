@@ -34,7 +34,7 @@ model Car{
 }
 
 model Order{
-  id String @id @default(uuid())
+  id String @id @default(cuid())
 
   carId String @db.Text
   carName String @db.Text
