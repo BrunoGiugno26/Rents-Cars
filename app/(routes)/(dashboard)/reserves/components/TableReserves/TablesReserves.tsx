@@ -51,7 +51,7 @@ export function TablesReserves(props: TableReservesProps) {
             
             if (response.ok) {
                 // ✅ Notificación de éxito usando Sonner
-                toast.success("Reserva cancelada con éxito.", {
+                toast.success("Reservation successfully cancelled.", {
                     description: `order ${orderToCancelId} has been marked as cancelled.`,
                 });
                 router.refresh(); 

@@ -1,34 +1,36 @@
+// middleware.ts
+
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 // Define las rutas que son públicas y no requieren autenticación
 const isPublicRoute = createRouteMatcher([
-  "/",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/api/trpc(.*)",
-  "/api/uploadthing(.*)",
-  "/api/webhook",
+    "/",
+    "/sign-in(.*)",
+    "/sign-up(.*)",
+    "/api/trpc(.*)",
+    "/api/uploadthing(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) {
-    // Si la ruta no es pública, redirige al usuario si no está autenticado
-    // Esta es la forma correcta de hacerlo sin usar el método .protect()
-    // en versiones más recientes de Clerk
-    // Puedes reemplazar la URL de redirección si es necesario
-    const url = new URL(req.url);
-    const { userId } = await auth();
-    if (!userId) {
-      url.pathname = "/sign-in";
-      return NextResponse.redirect(url);
+    // Si la URL es la del webhook, la ignoramos.
+    if (req.nextUrl.pathname === '/api/webhook') {
+        return NextResponse.next();
     }
-  }
+    
+    if (!isPublicRoute(req)) {
+        const url = new URL(req.url);
+        const { userId } = auth();
+
+        if (!userId) {
+            url.pathname = "/sign-in";
+            return NextResponse.redirect(url);
+        }
+    }
+    return NextResponse.next();
 });
 
 export const config = {
-  matcher: [
-    // El matcher protege todas las rutas excepto las que empiezan con _next, static, o favicon.ico
-    "/((?!_next|static|favicon.ico).*)",
-  ],
+    // 🔑 SOLUCIÓN DE AISLAMIENTO: Ignora explícitamente el webhook.
+    matcher: ["/((?!api/webhook|_next|static|favicon.ico|api/uploadthing).*)"],
 };
