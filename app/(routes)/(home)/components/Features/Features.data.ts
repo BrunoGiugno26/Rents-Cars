@@ -20,7 +20,7 @@ export const dataFeatures = [
     },
     {
         icon: HandCoins,
-        text: "With thee best price",
+        text: "With the best price",
         bg: "bg-cyan-300",
         delay: 1.5,
     },

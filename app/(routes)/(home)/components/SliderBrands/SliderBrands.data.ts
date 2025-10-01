@@ -22,8 +22,8 @@ export const dataBrands = [
         alt: "Nissan Logo",
     },
     {
-        url: "https://ik.imagekit.io/fefgntjox/Rents-Cars/Tesla-Logo.png?updatedAt=1758415395632",
-        alt: "Tesla Logo",
+        url: "https://ik.imagekit.io/fefgntjox/Rents-Cars/ford_logo_icon_169155.png?updatedAt=1759328152794",
+        alt: "Ford Logo",
     },
     {
         url: "https://ik.imagekit.io/fefgntjox/Rents-Cars/Volkswagen-Logo.png?updatedAt=1758415395407",

@@ -90,7 +90,7 @@ export function FiltersCars(props: FiltersCarsProps) {
       </Select>
       <Select onValueChange={(value) => handleFilter("people", value)} value={filters.people}>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Persons" />
+          <SelectValue placeholder="People" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup className="bg-white text-black">
