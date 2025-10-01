@@ -45,8 +45,8 @@ export const dataSecondBlockOutFleet =[
         alt:"BMW",
     },
     {
-        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-7.jpg?updatedAt=1758471049187",
-        alt:"Tesla",
+        url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/R.jpg?updatedAt=1759336035797",
+        alt:"Ford",
     },
     {
         url:"https://ik.imagekit.io/fefgntjox/Rents-Cars/img-13.jpg?updatedAt=1758546673254",
